@@ -7,30 +7,24 @@ let score = 0;
 let timer;
 let gameActive = false;
 
+// 기존 코드...
+
 function startGame() {
   createTiles();
   resetGame();
-  startButton.style.display = 'none';
-  gameActive = true;
   countdown(3);
-}
-
-function createTiles() {
-  for (let i = 0; i < 16; i++) {
-    const tile = document.createElement('div');
-    tile.className = 'tile';
-    tilesContainer.appendChild(tile);
-  }
 }
 
 function countdown(seconds) {
   let count = seconds;
+  const countdownElement = document.getElementById('countdown');
   countdownElement.textContent = count;
+  countdownElement.classList.remove('hidden');
 
   const countdownInterval = setInterval(() => {
     if (count === 0) {
       clearInterval(countdownInterval);
-      countdownElement.textContent = '';
+      countdownElement.classList.add('hidden');
       changeRandomTileColor();
       startTileClickListener();
     } else {
@@ -39,6 +33,9 @@ function countdown(seconds) {
     }
   }, 1000);
 }
+
+// 기존 코드...
+
 
 function changeRandomTileColor() {
   const tiles = document.querySelectorAll('.tile');
