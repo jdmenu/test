@@ -87,4 +87,16 @@ function resetGame() {
   gameActive = false;
 }
 
+function createTiles() {
+  for (let i = 0; i < 16; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.style.width = '80px';
+    tile.style.height = '80px';
+    tile.style.borderRadius = '8px';
+    tile.style.cursor = 'pointer';
+    tilesContainer.appendChild(tile);
+  }
+}
+
 startButton.addEventListener('click', startGame);
