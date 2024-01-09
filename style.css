@@ -58,3 +58,9 @@ body {
 .hidden {
     display: none;
 }
+
+
+#countdown {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
