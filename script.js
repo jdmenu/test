@@ -15,6 +15,14 @@ function startGame() {
   countdown(3);
 }
 
+function createTiles() {
+  for (let i = 0; i < 16; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tilesContainer.appendChild(tile);
+  }
+}
+
 function countdown(seconds) {
   let count = seconds;
   countdownElement.textContent = count;
@@ -32,14 +40,6 @@ function countdown(seconds) {
   }, 1000);
 }
 
-function createTiles() {
-  for (let i = 0; i < 16; i++) {
-    const tile = document.createElement('div');
-    tile.className = 'tile';
-    tilesContainer.appendChild(tile);
-  }
-}
-
 function changeRandomTileColor() {
   const tiles = document.querySelectorAll('.tile');
   const randomIndex = Math.floor(Math.random() * tiles.length);
@@ -50,4 +50,41 @@ function changeRandomTileColor() {
   randomTile.style.backgroundColor = getRandomColor();
 }
 
-// (이하 생략)
+function resetTilesColor() {
+  const tiles = document.querySelectorAll('.tile');
+  tiles.forEach(tile => {
+    tile.style.backgroundColor = '#e0e0e0';
+  });
+}
+
+function getRandomColor() {
+  const colors = ['#ffcccb', '#add8e6', '#98fb98', '#ffc0cb', '#dda0dd', '#f0e68c', '#87cefa', '#afeeee'];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
+function startTileClickListener() {
+  const tiles = document.querySelectorAll('.tile');
+  tiles.forEach(tile => {
+    tile.addEventListener('click', handleTileClick);
+  });
+}
+
+function handleTileClick(event) {
+  if (gameActive) {
+    score++;
+    scoreElement.textContent = `Score: ${score}`;
+    changeRandomTileColor();
+  }
+}
+
+function resetGame() {
+  score = 0;
+  scoreElement.textContent = 'Score: 0';
+  clearInterval(timer);
+  resetTilesColor();
+  startButton.style.display = 'block';
+  gameActive = false;
+}
+
+startButton.addEventListener('click', startGame);
