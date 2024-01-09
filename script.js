@@ -8,10 +8,10 @@ let timer;
 let gameActive = false;
 
 function startGame() {
+  createTiles();
   resetGame();
   startButton.style.display = 'none';
   gameActive = true;
-  createTiles(); 
   countdown(3);
 }
 
