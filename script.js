@@ -23,6 +23,46 @@ function startGame() {
     });
 }
 
+// ...
+
+function countdown(seconds, callback) {
+    let counter = seconds;
+    const countdownInterval = setInterval(() => {
+        if (counter > 0) {
+            console.log(counter);
+            // 숫자를 화면에 표시
+            statusElement.innerText = counter;
+            counter--;
+        } else {
+            clearInterval(countdownInterval);
+            statusElement.innerText = "뱀파이어를 피해 생존하세요!";
+            callback();
+        }
+    }, 1000);
+}
+
+function startGame() {
+    score = 0;
+    updateScore();
+    isGameActive = true;
+    startButton.disabled = true;
+
+    countdown(3, () => {
+        // 3초 후에 시작되면서 초기화
+        clearTiles();
+        generateRandomTile();
+
+        setTimeout(() => {
+            isGameActive = false;
+            startButton.disabled = false;
+            showPopup();
+        }, 15000);
+    });
+}
+
+// ...
+
+
 function generateRandomTile() {
     clearTiles();
     const randomIndex = Math.floor(Math.random() * 16);
