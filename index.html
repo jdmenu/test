@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>색 바뀌는 타일 게임</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Tile Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="countdown"></div>
-    <div id="game-container">
-        <h2 id="score">점수: <span id="score-value">0</span></h2>
-        <div id="tiles-container"></div>
-        <button id="start-button" onclick="startGame()">시작하기</button>
-    </div>
-
-    <div id="popup-container" class="hidden">
-        <div id="popup">
-            <p id="popup-score">당신의 점수: <span id="popup-score-value">0</span></p>
-        </div>
-    </div>
-<!-- 기존 코드 이후에 추가 -->
-<div id="countdown" class="hidden">3</div>
-
-    <script src="script.js"></script>
+  <div id="game-container">
+    <div id="timer">남은 시간: <span id="remaining-time">15</span>초</div>
+    <div id="tiles-container"></div>
+    <div id="countdown" class="hidden">3</div>
+    <button id="start-button">Start Game</button>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
