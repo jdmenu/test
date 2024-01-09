@@ -1,5 +1,5 @@
 const tilesContainer = document.getElementById('tiles-container');
-const scoreElement = document.getElementById('score');
+const remainingTimeElement = document.getElementById('remaining-time');
 const startButton = document.getElementById('start-button');
 const countdownElement = document.getElementById('countdown');
 
@@ -7,17 +7,26 @@ let score = 0;
 let timer;
 let gameActive = false;
 
-// 기존 코드...
-
 function startGame() {
   createTiles();
   resetGame();
   countdown(3);
 }
 
+function createTiles() {
+  for (let i = 0; i < 16; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.style.width = '80px';
+    tile.style.height = '80px';
+    tile.style.borderRadius = '20px';
+    tile.style.cursor = 'pointer';
+    tilesContainer.appendChild(tile);
+  }
+}
+
 function countdown(seconds) {
   let count = seconds;
-  const countdownElement = document.getElementById('countdown');
   countdownElement.textContent = count;
   countdownElement.classList.remove('hidden');
 
@@ -27,15 +36,13 @@ function countdown(seconds) {
       countdownElement.classList.add('hidden');
       changeRandomTileColor();
       startTileClickListener();
+      updateRemainingTime();
     } else {
       count--;
       countdownElement.textContent = count;
     }
   }, 1000);
 }
-
-// 기존 코드...
-
 
 function changeRandomTileColor() {
   const tiles = document.querySelectorAll('.tile');
@@ -70,30 +77,20 @@ function startTileClickListener() {
 function handleTileClick(event) {
   if (gameActive) {
     score++;
-    scoreElement.textContent = `Score: ${score}`;
+    updateRemainingTime();
     changeRandomTileColor();
   }
 }
 
-function resetGame() {
-  score = 0;
-  scoreElement.textContent = 'Score: 0';
-  clearInterval(timer);
-  resetTilesColor();
-  startButton.style.display = 'block';
-  gameActive = false;
+function updateRemainingTime() {
+  remainingTimeElement.textContent = '15';
 }
 
-function createTiles() {
-  for (let i = 0; i < 16; i++) {
-    const tile = document.createElement('div');
-    tile.className = 'tile';
-    tile.style.width = '80px';
-    tile.style.height = '80px';
-    tile.style.borderRadius = '8px';
-    tile.style.cursor = 'pointer';
-    tilesContainer.appendChild(tile);
-  }
+function resetGame() {
+  score = 0;
+  clearInterval(timer);
+  resetTilesColor();
+  gameActive = false;
 }
 
 startButton.addEventListener('click', startGame);
