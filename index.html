@@ -23,7 +23,7 @@
 
   <script>
     function getMeal() {
-      const mealDate = '20231201';
+      //const mealDate = '20231201';
       const apiKey = 'YOUR_API_KEY';
       const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=a2fdd988b9cb4361a1015f54573bb186&Type=json&pIndex=1&pSize=10&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530117&MLSV_YMD=${mealDate}`;
 
@@ -39,7 +39,11 @@
 
   if (mealData) {
     mealData.forEach(meal => {
-      const mealDate = meal.MLSV_YMD;
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+      const day = currentDate.getDate().toString().padStart(2, '0');
+      const mealDate = `${year}${month}${day}`;
       const mealType = meal.MMEAL_SC_NM;
       const mealContent = meal.DDISH_NM;
       const originInfo = meal.ORPLC_INFO;
