@@ -27,10 +27,10 @@
       font-weight: bold;
       background-color: white; /* Orange background color */
       padding: 0px;
-      margin: 0px 0;
+      margin-top: 1px;
       display: inline-block;
       border-radius: 50px;
-      -webkit-text-stroke: 4px black; /* Webkit (Chrome, Safari, Opera) browsers */
+      -webkit-text-stroke: 3px black; /* Webkit (Chrome, Safari, Opera) browsers */
       text-stroke: 2px black; /* Non-webkit browsers */
       color: orange;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Text shadow for balloon effect */
@@ -42,10 +42,10 @@
       font-weight: bold;
       background-color: white; /* Orange background color */
       padding: 0px;
-      margin: 0px 0;
+      margin-bottom: 1px;
       display: inline-block;
       border-radius: 50px;
-      -webkit-text-stroke: 4px black; /* Webkit (Chrome, Safari, Opera) browsers */
+      -webkit-text-stroke: 3px black; /* Webkit (Chrome, Safari, Opera) browsers */
       text-stroke: 2px black; /* Non-webkit browsers */
       color: white;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Text shadow for balloon effect */
@@ -67,24 +67,25 @@
 
   p {
     font-size: 2em; /* 글씨 크기 더 키우기 */
-    margin: 15px 0; /* 여백 조절 */
+    margin: 2px 0; /* 여백 조절 */
     font-family: 'Bagel Fat One', system-ui;
     color: black;
   }
   hr {
     border: 1px solid #e79a0b; /* 선 색상 */
-    margin: 20px 0;
+    margin: 10px 0;
   }
 </style>
 
 </head>
 <body>
-
+    <div style="display: flex; flex-direction: column; align-items: center;">
 <p>
 <h2>저동고등학교<h2>
 </p>
 
  <p> <h1>오늘의 급식</h1></p>
+ </div>
   <div id="mealInfo"></div>
 
   <script>
