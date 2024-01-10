@@ -34,7 +34,7 @@
 
       fetch(apiUrl)
         .then(response => response.json())
-        .then(data => displayMealInfo(data.mealServiceDietInfo[1].row))
+        .then(data => displayMealInfo(data.mealServiceDietInfo[1]?.row))
         .catch(error => console.error('Error fetching meal information:', error));
     }
 
@@ -42,20 +42,20 @@
       const mealInfoDiv = document.getElementById('mealInfo');
       mealInfoDiv.innerHTML = '';
 
-      if (mealData) {
+      if (mealData && mealData.length > 0) {
         mealData.forEach(meal => {
           const mealType = meal.MMEAL_SC_NM;
           const mealContent = meal.DDISH_NM;
           const originInfo = meal.ORPLC_INFO;
           const nutritionInfo = meal.NTR_INFO;
 
-          const mealInfoHTML = `<p><strong>식단 내용:</strong> ${mealContent}</p>
+          const mealInfoHTML = `<p><h1><strong>식단 내용:</strong> ${mealContent}</h1></p>
                                 <hr>`;
 
           mealInfoDiv.innerHTML += mealInfoHTML;
         });
       } else {
-        mealInfoDiv.innerHTML = '<p>급식 정보를 가져올 수 없습니다.</p>';
+        mealInfoDiv.innerHTML = '<p>급식 정보가 없습니다.</p>';
       }
     }
   </script>
