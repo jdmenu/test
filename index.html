@@ -3,16 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Tile Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>급식 정보</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    #mealInfo {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div id="game-container">
-    <div id="timer">남은 시간: <span id="remaining-time">15</span>초</div>
-    <div id="tiles-container"></div>
-    <div id="countdown" class="hidden">3</div>
-    <button id="start-button">Start Game</button>
-  </div>
-  <script src="script.js"></script>
+  <h1>급식 정보 웹페이지</h1>
+  <button onclick="getMeal()">급식 정보 불러오기</button>
+  <div id="mealInfo"></div>
+
+  <script>
+    function getMeal() {
+      const apiKey = 'YOUR_API_KEY';
+      const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=a2fdd988b9cb4361a1015f54573bb186&Type=json&pIndex=1&pSize=10&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530117`;
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => displayMealInfo(data.mealServiceDietInfo[1].row))
+        .catch(error => console.error('Error fetching meal information:', error));
+    }
+
+    function displayMealInfo(mealData) {
+  const mealInfoDiv = document.getElementById('mealInfo');
+  mealInfoDiv.innerHTML = '';
+
+  if (mealData) {
+    mealData.forEach(meal => {
+      const mealDate = meal.MLSV_YMD;
+      const mealType = meal.MMEAL_SC_NM;
+      const mealContent = meal.DDISH_NM;
+      const originInfo = meal.ORPLC_INFO;
+      const nutritionInfo = meal.NTR_INFO;
+
+      const mealInfoHTML = `<p><strong>날짜:</strong> ${mealDate}</p>
+                            <p><strong>식사 유형:</strong> ${mealType}</p>
+                            <p><strong>식단 내용:</strong> ${mealContent}</p>
+                            <p><strong>원산지 정보:</strong> ${originInfo}</p>
+                            <p><strong>영양 정보:</strong> ${nutritionInfo}</p>
+                            <hr>`;
+
+      mealInfoDiv.innerHTML += mealInfoHTML;
+    });
+  } else {
+    mealInfoDiv.innerHTML = '<p>급식 정보를 가져올 수 없습니다.</p>';
+  }
+}
+
+  </script>
 </body>
 </html>
