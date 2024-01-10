@@ -23,22 +23,31 @@
 
   h1 {
     font-size: 2em; /* 글씨 크기 더 키우기 */
-    font-family: 'Black Han Sans', sans-serif;
-    color: orange;
+    color: black; /* 글씨 색상 추가 */
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; /* 둥글둥글한 글씨체 추가 */
   }
-  
+
   #mealInfo {
     margin-top: 20px;
   }
 
+  .menu {
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 10px;
+      background-color: white;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
   p {
     font-size: 2em; /* 글씨 크기 더 키우기 */
-    margin: 10px 0; /* 여백 조절 */
-    font-family: 'Black Han Sans', sans-serif;
-    color: orange;
+    margin: 15px 0; /* 여백 조절 */
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; /* 둥글둥글한 글씨체 추가 */
+    color: black;
   }
   hr {
-    border: 1px solid #2e86de; /* 선 색상 */
+    border: 1px solid #e79a0b; /* 선 색상 */
     margin: 20px 0;
   }
 </style>
@@ -73,12 +82,12 @@
       if (mealData && mealData.length > 0) {
         mealData.forEach(meal => {
           const mealType = meal.MMEAL_SC_NM;
-          const mealContent = meal.DDISH_NM;
+          const mealContent = meal.DDISH_NM.replace(/\([\d.,]+\)/g, '<br>');
           const originInfo = meal.ORPLC_INFO;
           const nutritionInfo = meal.NTR_INFO;
 
           const mealInfoHTML = `<hr>
-                                <p><h1> ${mealContent}</h1></p>
+          <div class = "menu"><h3> ${mealContent}</h3></div>
                                 <hr>`;
 
           mealInfoDiv.innerHTML += mealInfoHTML;
