@@ -30,7 +30,7 @@
       const day = currentDate.getDate().toString().padStart(2, '0');
       const mealDate = `${year}${month}${day}`;
       const apiKey = 'a2fdd988b9cb4361a1015f54573bb186'; // Replace with your API key
-      const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${apiKey}&Type=json&pIndex=1&pSize=10&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530117&MLSV_YMD=${mealDate}`;
+      const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${apiKey}&Type=json&pIndex=1&pSize=10&ATPT_OFCDC_SC_CODE=J10&SD_SCHUL_CODE=7530117&MLSV_YMD=20231201`;
 
       fetch(apiUrl)
         .then(response => response.json())
