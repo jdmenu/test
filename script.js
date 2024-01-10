@@ -78,7 +78,8 @@ function handleTileClick(event) {
   if (gameActive) {
     score++;
     updateRemainingTime();
-    changeRandomTileColor();
+    const clickedTile = event.target;
+    clickedTile.style.backgroundColor = getRandomColor();
   }
 }
 
