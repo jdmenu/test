@@ -19,17 +19,18 @@
     text-align: center;
     margin: 20px;
    /* background-color: #fce4ec배경색 */
-    background-image: url('https://i.ibb.co/0jYxK7M/1705051317725.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+   background-image: url('https://i.ibb.co/0jYxK7M/1705051317725.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* 추가: body를 상위로 설정하여 하위 요소의 위치를 상대적으로 지정 */
   }
 
   h1 {
       font-size: 68px;
       font-family: 'Bagel Fat One', system-ui;
       font-weight: bold;
-      background-color: white; /* Orange background color */
+      background-color: transparent;
       padding: 1px;
       line-height: 50px;
       margin: 1px;
@@ -46,7 +47,7 @@
       font-size: 44px;
       font-family: 'Bagel Fat One', system-ui;
       font-weight: bold;
-      background-color: white; /* Orange background color */
+      background-color: transparent;
       padding: 1px;
      line-height: 50px;
       margin: 1px;
@@ -59,20 +60,22 @@
     }
 
 .cal {
-	font-family: 'Segoe UI', sans-serif;
+	    font-family: 'Segoe UI', sans-serif;
         font-size: 15px;
-	text-align: right;
+        background-color: transparent;
+	    text-align: right;
 }
 
   #mealInfo {
+  
     margin-top: 20px;
   }
-
+ 
   .menu {
       font-size: 20px;
       font-weight: bold;
       border-radius: 1px;
-      background-color: white;
+      background-color: transparent;
       padding: 10px;
       margin: 5px 0;
     }
