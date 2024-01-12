@@ -21,10 +21,13 @@
    /* background-color: #fce4ec배경색 */
    background-image: url('https://i.ibb.co/0jYxK7M/1705051317725.jpg');
   background-size: cover;
+  height: 800px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
   position: relative; /* 추가: body를 상위로 설정하여 하위 요소의 위치를 상대적으로 지정 */
   }
+
 
   h1 {
       font-size: 68px;
@@ -96,7 +99,7 @@
 </head>
 <body>
 <p></p><h2>저동고등학교<h2><h1>오늘의 급식</h1><p></p>
-  <div id="mealInfo"></div>
+    <div id="mealInfo"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', getMeal);
