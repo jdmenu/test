@@ -114,10 +114,12 @@
           const mealContent = meal.DDISH_NM.replace(/\([\d.,]+\)/g, '<br>');
           const originInfo = meal.ORPLC_INFO;
           const nutritionInfo = meal.NTR_INFO;
+          const calInfo = meal.CAL_INFO;
+
 
           const mealInfoHTML = `<hr>
           <div class = "menu"><h3> ${mealContent}</h3></div>
-                                <hr>`;
+                                <hr>${calInfo}kcal`;
 
           mealInfoDiv.innerHTML += mealInfoHTML;
         });
